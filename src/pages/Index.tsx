@@ -12,29 +12,7 @@ const Index = () => {
   const [isLocating, setIsLocating] = useState(false);
   const [estimatedPrice, setEstimatedPrice] = useState<number | null>(null);
 
-  const tariffs = [
-    {
-      name: 'Эконом',
-      price: '150₽',
-      description: 'Комфортная поездка по доступной цене',
-      icon: 'Car',
-      features: ['Стандартный автомобиль', 'Опытный водитель', 'Оплата картой']
-    },
-    {
-      name: 'Комфорт',
-      price: '250₽',
-      description: 'Повышенный комфорт и просторный салон',
-      icon: 'Car',
-      features: ['Премиум автомобиль', 'Кондиционер', 'Wi-Fi в салоне']
-    },
-    {
-      name: 'Бизнес',
-      price: '450₽',
-      description: 'Представительский класс для важных встреч',
-      icon: 'Briefcase',
-      features: ['Автомобили класса люкс', 'VIP-сервис', 'Персональный водитель']
-    }
-  ];
+
 
   const getLocation = () => {
     setIsLocating(true);
@@ -87,9 +65,7 @@ const Index = () => {
             <h1 className="text-2xl font-heading font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">TAXI BOT</h1>
           </div>
           <nav className="hidden md:flex gap-6">
-            <a href="#order" className="hover:text-primary transition-colors font-medium">Заказ</a>
-            <a href="#tariffs" className="hover:text-primary transition-colors font-medium">Тарифы</a>
-            <a href="#drivers" className="hover:text-primary transition-colors font-medium">Водителям</a>
+            <a href="#order" className="hover:text-primary transition-colors font-medium">Заказ такси</a>
           </nav>
         </div>
       </header>
@@ -169,95 +145,7 @@ const Index = () => {
           </Card>
         </section>
 
-        <section id="tariffs" className="mb-16">
-          <h2 className="text-4xl font-heading font-bold text-center mb-12">Тарифы и цены</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {tariffs.map((tariff, index) => (
-              <Card
-                key={index}
-                className="hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-none shadow-lg bg-white/80 backdrop-blur-sm"
-              >
-                <CardHeader className="text-center">
-                  <div className="mx-auto bg-gradient-to-br from-primary/30 to-accent/30 w-20 h-20 rounded-3xl flex items-center justify-center mb-4 shadow-md">
-                    <Icon name={tariff.icon as any} size={32} className="text-primary" />
-                  </div>
-                  <CardTitle className="text-2xl font-heading">{tariff.name}</CardTitle>
-                  <div className="text-4xl font-bold text-primary my-2">{tariff.price}</div>
-                  <CardDescription className="text-base">{tariff.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
-                    {tariff.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
 
-        <section id="drivers" className="mb-16">
-          <Card className="max-w-4xl mx-auto bg-gradient-to-br from-primary/10 to-accent/10 border-none shadow-2xl">
-            <CardHeader className="text-center">
-              <CardTitle className="text-4xl font-heading mb-4">Информация для водителей</CardTitle>
-              <CardDescription className="text-lg">
-                Присоединяйтесь к нашей команде и начните зарабатывать уже сегодня
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="grid md:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="bg-gradient-to-br from-primary to-accent rounded-2xl p-3 shadow-md">
-                    <Icon name="TrendingUp" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-xl mb-1">Высокий доход</h3>
-                    <p className="text-muted-foreground">Зарабатывайте до 5000₽ в день</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="bg-gradient-to-br from-primary to-accent rounded-2xl p-3 shadow-md">
-                    <Icon name="Calendar" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-xl mb-1">Гибкий график</h3>
-                    <p className="text-muted-foreground">Работайте когда удобно вам</p>
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="bg-gradient-to-br from-primary to-accent rounded-2xl p-3 shadow-md">
-                    <Icon name="Shield" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-xl mb-1">Поддержка 24/7</h3>
-                    <p className="text-muted-foreground">Всегда готовы помочь</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="bg-gradient-to-br from-primary to-accent rounded-2xl p-3 shadow-md">
-                    <Icon name="Zap" size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-xl mb-1">Быстрые выплаты</h3>
-                    <p className="text-muted-foreground">Вывод средств каждый день</p>
-                  </div>
-                </div>
-              </div>
-              <div className="md:col-span-2 text-center mt-4">
-                <Button size="lg" className="text-lg px-8 py-6">
-                  <Icon name="UserPlus" className="mr-2" size={24} />
-                  Стать водителем
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
       </main>
 
       <footer className="bg-gradient-to-r from-primary/90 to-accent/90 text-white py-8 px-6">

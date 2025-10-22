@@ -77,17 +77,19 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-secondary">
-      <header className="bg-black text-white py-4 px-6 sticky top-0 z-50 shadow-lg">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
+      <header className="bg-white/80 backdrop-blur-md text-foreground py-5 px-6 sticky top-0 z-50 shadow-sm border-b border-border">
         <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Icon name="Zap" size={32} className="text-primary" />
-            <h1 className="text-2xl font-heading font-bold">TAXI BOT</h1>
+          <div className="flex items-center gap-3">
+            <div className="bg-gradient-to-br from-primary to-accent p-2 rounded-2xl">
+              <Icon name="Car" size={28} className="text-white" />
+            </div>
+            <h1 className="text-2xl font-heading font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">TAXI BOT</h1>
           </div>
           <nav className="hidden md:flex gap-6">
-            <a href="#order" className="hover:text-primary transition-colors">Заказ</a>
-            <a href="#tariffs" className="hover:text-primary transition-colors">Тарифы</a>
-            <a href="#drivers" className="hover:text-primary transition-colors">Водителям</a>
+            <a href="#order" className="hover:text-primary transition-colors font-medium">Заказ</a>
+            <a href="#tariffs" className="hover:text-primary transition-colors font-medium">Тарифы</a>
+            <a href="#drivers" className="hover:text-primary transition-colors font-medium">Водителям</a>
           </nav>
         </div>
       </header>
@@ -101,15 +103,15 @@ const Index = () => {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
             Быстрое такси в любую точку города. Автоматическое определение местоположения и прозрачные цены
           </p>
-          <Button size="lg" className="text-lg px-8 py-6 animate-pulse-slow" onClick={() => document.getElementById('order')?.scrollIntoView({ behavior: 'smooth' })}>
+          <Button size="lg" className="text-lg px-8 py-6 animate-pulse-slow shadow-lg hover:shadow-xl" onClick={() => document.getElementById('order')?.scrollIntoView({ behavior: 'smooth' })}>
             <Icon name="MapPin" className="mr-2" size={20} />
             Заказать такси сейчас
           </Button>
         </section>
 
         <section id="order" className="mb-16 animate-scale-in">
-          <Card className="max-w-2xl mx-auto shadow-xl border-2">
-            <CardHeader className="bg-gradient-to-r from-primary/10 to-primary/5">
+          <Card className="max-w-2xl mx-auto shadow-2xl border-none overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-primary/20 to-accent/20">
               <CardTitle className="text-3xl font-heading">Заказ такси</CardTitle>
               <CardDescription>Укажите маршрут и получите мгновенную оценку стоимости</CardDescription>
             </CardHeader>
@@ -148,7 +150,7 @@ const Index = () => {
               </div>
 
               {estimatedPrice && (
-                <div className="bg-primary/10 p-6 rounded-lg animate-fade-in">
+                <div className="bg-gradient-to-br from-primary/20 to-accent/20 p-6 rounded-3xl animate-fade-in shadow-inner">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-muted-foreground">Ориентировочная стоимость</p>
@@ -173,10 +175,10 @@ const Index = () => {
             {tariffs.map((tariff, index) => (
               <Card
                 key={index}
-                className="hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 hover:border-primary"
+                className="hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-none shadow-lg bg-white/80 backdrop-blur-sm"
               >
                 <CardHeader className="text-center">
-                  <div className="mx-auto bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                  <div className="mx-auto bg-gradient-to-br from-primary/30 to-accent/30 w-20 h-20 rounded-3xl flex items-center justify-center mb-4 shadow-md">
                     <Icon name={tariff.icon as any} size={32} className="text-primary" />
                   </div>
                   <CardTitle className="text-2xl font-heading">{tariff.name}</CardTitle>
@@ -199,7 +201,7 @@ const Index = () => {
         </section>
 
         <section id="drivers" className="mb-16">
-          <Card className="max-w-4xl mx-auto bg-gradient-to-br from-primary/5 to-primary/10 border-2 border-primary/20">
+          <Card className="max-w-4xl mx-auto bg-gradient-to-br from-primary/10 to-accent/10 border-none shadow-2xl">
             <CardHeader className="text-center">
               <CardTitle className="text-4xl font-heading mb-4">Информация для водителей</CardTitle>
               <CardDescription className="text-lg">
@@ -209,8 +211,8 @@ const Index = () => {
             <CardContent className="grid md:grid-cols-2 gap-8">
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <div className="bg-primary rounded-full p-3">
-                    <Icon name="TrendingUp" size={24} />
+                  <div className="bg-gradient-to-br from-primary to-accent rounded-2xl p-3 shadow-md">
+                    <Icon name="TrendingUp" size={24} className="text-white" />
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-xl mb-1">Высокий доход</h3>
@@ -218,8 +220,8 @@ const Index = () => {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="bg-primary rounded-full p-3">
-                    <Icon name="Calendar" size={24} />
+                  <div className="bg-gradient-to-br from-primary to-accent rounded-2xl p-3 shadow-md">
+                    <Icon name="Calendar" size={24} className="text-white" />
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-xl mb-1">Гибкий график</h3>
@@ -229,8 +231,8 @@ const Index = () => {
               </div>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <div className="bg-primary rounded-full p-3">
-                    <Icon name="Shield" size={24} />
+                  <div className="bg-gradient-to-br from-primary to-accent rounded-2xl p-3 shadow-md">
+                    <Icon name="Shield" size={24} className="text-white" />
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-xl mb-1">Поддержка 24/7</h3>
@@ -238,8 +240,8 @@ const Index = () => {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="bg-primary rounded-full p-3">
-                    <Icon name="Zap" size={24} />
+                  <div className="bg-gradient-to-br from-primary to-accent rounded-2xl p-3 shadow-md">
+                    <Icon name="Zap" size={24} className="text-white" />
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-xl mb-1">Быстрые выплаты</h3>
@@ -258,13 +260,15 @@ const Index = () => {
         </section>
       </main>
 
-      <footer className="bg-black text-white py-8 px-6">
+      <footer className="bg-gradient-to-r from-primary/90 to-accent/90 text-white py-8 px-6">
         <div className="container mx-auto text-center">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Icon name="Zap" size={28} className="text-primary" />
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="bg-white/20 p-2 rounded-2xl">
+              <Icon name="Car" size={28} className="text-white" />
+            </div>
             <span className="text-xl font-heading font-bold">TAXI BOT</span>
           </div>
-          <p className="text-muted-foreground">© 2025 Taxi Bot. Все права защищены.</p>
+          <p className="text-white/80">© 2025 Taxi Bot. Все права защищены.</p>
         </div>
       </footer>
     </div>
